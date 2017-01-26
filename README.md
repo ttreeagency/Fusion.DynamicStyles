@@ -24,6 +24,7 @@ Fusion object when you need a specific stylesheets for the the current Fusion ob
 ## What's next ?
 
 - [x] Fusion object to inline external CSS resource (inline)
+- [x] CSS minification
 - [ ] Add a Fusion object to include external CSS resource (link + file caching)
 - [ ] Generate the CSS name automatically based on the prototype name (pluggable)
 - [ ] Concatenation

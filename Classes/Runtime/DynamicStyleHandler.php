@@ -11,6 +11,7 @@ namespace Ttree\Fusion\DynamicStyles\Runtime;
  * source code.
  */
 
+use MatthiasMullie\Minify\CSS;
 use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
 use Neos\Utility\Files;
@@ -49,7 +50,9 @@ class DynamicStyleHandler implements \IteratorAggregate
     public function getIterator()
     {
         foreach ($this->registry as $resource) {
-            yield Files::getFileContents($resource);
+            $minifier = new CSS();
+            $minifier->add(Files::getFileContents($resource));
+            yield $minifier->minify();
         }
     }
 }
