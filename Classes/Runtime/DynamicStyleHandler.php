@@ -13,6 +13,7 @@ namespace Ttree\Fusion\DynamicStyles\Runtime;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
+use Neos\Utility\Files;
 
 /**
  * Registry to keep track of used CSS in the current page rendering
@@ -20,15 +21,35 @@ use Neos\Fusion\FusionObjects\AbstractFusionObject;
  * @Flow\Scope("singleton")
  * @api
  */
-class MetaHandler
+class DynamicStyleHandler implements \IteratorAggregate
 {
     /**
+     * @var array
+     */
+    protected $registry = [];
+
+    /**
+     * @param string $meta
      * @param mixed $content
      * @param string $typoScriptPath
      * @param AbstractFusionObject|null $contextObject
      */
-    public function handle($content, string $typoScriptPath, AbstractFusionObject $contextObject = null): void
+    public function handle(string $meta, $content, string $typoScriptPath, AbstractFusionObject $contextObject = null): void
     {
-        \Neos\Flow\var_dump($content, $typoScriptPath);
+        if ($meta !== 'css') {
+            return;
+        }
+        $hash = md5($content);
+        $this->registry[$hash] = $content;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIterator()
+    {
+        foreach ($this->registry as $resource) {
+            yield Files::getFileContents($resource);
+        }
     }
 }

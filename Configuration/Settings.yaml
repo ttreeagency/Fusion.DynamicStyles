@@ -1,0 +1,14 @@
+Neos:
+
+  Neos:
+    fusion:
+      autoInclude:
+        Ttree.Fusion.DynamicStyles: true
+
+  Fusion:
+
+    externalMetaHandlers:
+      'Ttree\Fusion\DynamicStyles\Runtime\DynamicStyleHandler':
+        enable: true
+        connectTo:
+          css: true
