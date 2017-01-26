@@ -20,6 +20,7 @@ use Ttree\Fusion\DynamicStyles\Runtime\DynamicStyleHandler;
  */
 class InlineStylesImplementation extends AbstractFusionObject
 {
+    const TEMPLATE = '<style>%s</style>';
     /**
      * @var DynamicStyleHandler
      * @Flow\Inject(proxy=false)
@@ -37,6 +38,6 @@ class InlineStylesImplementation extends AbstractFusionObject
         foreach ($this->dynamicStyleHandler as $resource) {
             $content .= $resource;
         }
-        return '<style>' . $content . '</style>';
+        return sprintf(self::TEMPLATE, $content);
     }
 }
