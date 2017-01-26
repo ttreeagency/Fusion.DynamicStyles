@@ -2,6 +2,8 @@
 
 This package contains Fusion objects to extract dynamic stylesheet during page rendering.
 
+*Warning*: The current Fusion implementation does not support this feature, so this package [require this Pull Request](https://github.com/neos/neos-development-collection/pull/1402)
+
 It's common to have complex components that are used only on a few pages. With this plugin you can nicely define in your
 Fusion object when you need a specific stylesheets for the the current Fusion object.
 
