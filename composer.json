@@ -1,0 +1,18 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "ttree/fusion-dynamicstyles",
+    "require": {
+        "typo3/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ttree\\Fusion\\DynamicStyles\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Ttree.Fusion.DynamicStyles"
+        }
+    }
+}
