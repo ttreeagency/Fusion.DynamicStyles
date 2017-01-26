@@ -1,7 +1,8 @@
 {
-    "description": "",
-    "type": "neos-package",
     "name": "ttree/fusion-dynamicstyles",
+    "description": "A Neos Fusion custom meta handler to extract dynamic stylesheet during page rendering",
+    "type": "neos-package",
+    "license": "MIT",
     "require": {
         "neos/fusion": "*"
     },
