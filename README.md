@@ -10,24 +10,28 @@ Fusion object when you need a specific stylesheets for the the current Fusion ob
 ## Configure your Fusion objects
 
     prototype(WebStarter:Object.PersonList) < prototype(Fusion:Template) {
-        templatePath = 'resource://Ttree.SwissConfederation.WebStarter/Private/Fusion/Object/PersonList/PersonList.html'
-        @css = ${'resource://Ttree.SwissConfederation.WebStarter/Private/Fusion/Object/PersonList/PersonList.css'}
+        templatePath = 'resource://Ttree.SwissConfederation.WebStarter/Private/Templates/PersonList.html'
+        @css         = 'resource://Ttree.SwissConfederation.WebStarter/Private/Stylesheets/PersonList.css'
     }
     
 ## Configure your document to inline the CSS during page rendering
 
-    prototype(Neos.Neos:Page) {
-        dynamicStyles = Ttree.Fusion.DynamicStyles:InlineStyles
-        @process.dynamicStyles = ${this.dynamicStyles + value}
-    }
+    prototype(Neos.Neos:Page).@process.styles = Ttree.Fusion.DynamicStyles:InlineStyles
+
+## Configure your document to build a minified external CSS with all the CSS used in the current page
+
+    prototype(Neos.Neos:Page).@process.styles = Ttree.Fusion.DynamicStyles:ExternalStyles
+
 
 ## What's next ?
 
 - [x] Fusion object to inline external CSS resource (inline)
 - [x] CSS minification
-- [ ] Add a Fusion object to include external CSS resource (link + file caching)
+- [x] Add a Fusion object to include external CSS resource
+- [ ] More inteligent build process (css ordering, ...)
+- [ ] Add more configuration (minification, concatenation, compression, ..)
 - [ ] Generate the CSS name automatically based on the prototype name (pluggable)
-- [ ] Concatenation
+- [x] Concatenation
 - [ ] Gzip
 
 ## Acknowledgments
