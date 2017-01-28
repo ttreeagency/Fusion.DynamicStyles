@@ -8,7 +8,7 @@ Neos:
   Fusion:
 
     externalMetaHandlers:
-      'Ttree\Fusion\DynamicStyles\Runtime\DynamicStyleHandler':
+      'Ttree\Fusion\DynamicStyles\Service\DynamicStyleRegistryService':
         enable: true
         connectTo:
           css: true

@@ -1,5 +1,5 @@
 <?php
-namespace Ttree\Fusion\DynamicStyles\Runtime;
+namespace Ttree\Fusion\DynamicStyles\Service;
 
 /*
  * This file is part of the Ttree.Fusion.DynamicStyles package.
@@ -22,7 +22,7 @@ use Neos\Utility\Files;
  * @Flow\Scope("singleton")
  * @api
  */
-class DynamicStyleHandler implements \IteratorAggregate
+class DynamicStyleRegistryService implements \IteratorAggregate
 {
     /**
      * @var array

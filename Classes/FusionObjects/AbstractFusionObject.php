@@ -12,15 +12,14 @@ namespace Ttree\Fusion\DynamicStyles\FusionObjects;
  */
 
 use Neos\Flow\Annotations as Flow;
+use Neos\Fusion\FusionObjects;
 use Ttree\Fusion\DynamicStyles\Service\DynamicStyleRegistryService;
 
 /**
- * Inline the dynamic stylesheets
+ * Base class for Dynamic Stylsheet implementation
  */
-class InlineStylesImplementation extends AbstractFusionObject
+abstract class AbstractFusionObject extends FusionObjects\AbstractFusionObject
 {
-    const TEMPLATE = '<style>%s</style>';
-
     /**
      * @var DynamicStyleRegistryService
      * @Flow\Inject(proxy=false)
@@ -28,19 +27,12 @@ class InlineStylesImplementation extends AbstractFusionObject
     protected $dynamicStyleHandler;
 
     /**
-     * {@inheritdoc}
-     *
+     * @param string $content
      * @return string
      */
-    public function evaluate()
+    public function pushToPageHead($content)
     {
-        $content = '';
-        foreach ($this->dynamicStyleHandler as $resource) {
-            $content .= $resource;
-        }
-
-        $content = sprintf(self::TEMPLATE, $content);
-
-        return $this->pushToPageHead($content);
+        $value = $this->runtime->getCurrentContext()['value'];
+        return preg_replace('(<\/head>)', $content . PHP_EOL . '</head>', $value, 1);
     }
 }
