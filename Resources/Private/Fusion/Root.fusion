@@ -1,1 +1,2 @@
 prototype(Ttree.Fusion.DynamicStyles:InlineStyles).@class = 'Ttree\\Fusion\\DynamicStyles\\FusionObjects\\InlineStylesImplementation'
+prototype(Ttree.Fusion.DynamicStyles:ExternalStyles).@class = 'Ttree\\Fusion\\DynamicStyles\\FusionObjects\\ExternalStylesImplementation'
